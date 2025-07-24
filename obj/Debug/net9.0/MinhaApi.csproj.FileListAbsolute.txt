@@ -33,3 +33,5 @@
 /Users/liv01/Documents/estudos/MinhaApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/liv01/Documents/estudos/MinhaApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/liv01/Documents/estudos/MinhaApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/liv01/Documents/estudos/MinhaApi/bin/Debug/net9.0/Data/alunos.json
+/Users/liv01/Documents/estudos/MinhaApi/obj/Debug/net9.0/MinhaApi.sourcelink.json
