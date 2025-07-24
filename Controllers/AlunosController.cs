@@ -32,6 +32,8 @@ namespace AlunosApi.Controllers
                 Nome = aluno.Nome,
                 Curso = aluno.Curso
             };
+
+            alunos.Add(novoAluno);
             FakeDatabase.SalvarAlunos(alunos); 
             return CreatedAtAction(nameof(GetById), new { id = novoAluno.Id }, novoAluno); 
         }
