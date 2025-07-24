@@ -29,7 +29,23 @@ namespace AlunosApi.Controllers
             aluno.Id = alunos.Any() ? alunos.Max(a => a.Id) + 1 : 1; // Generate new ID
             alunos.Add(aluno);
             FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
-            return  CreatedAtAction(nameof(GetById), new { id = aluno.Id}, aluno); // Return 201 Created with the new aluno
+            return CreatedAtAction(nameof(GetById), new { id = aluno.Id }, aluno); // Return 201 Created with the new aluno
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, Aluno alunoAtualizado)
+        {
+            var alunos = FakeDatabase.CarregarAlunos();
+            var index = alunos.FindIndex(a => a.Id == id);
+
+            if (index == -1)
+                return NotFound();
+
+            alunoAtualizado.Id = id; // Ensure the ID remains the same
+            alunos[index] = alunoAtualizado; // Update the aluno in the list
+            FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
+
+            return NoContent(); // Return 204 No Content after successful update
         }
     }
 }

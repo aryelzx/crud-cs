@@ -14,3 +14,15 @@ Accept: application/json
   "nome": "alisson",
   "curso": "TI - Desenvolvimento de Sistemas"
 }
+
+###
+
+PUT {{MinhaApi_HostAddress}}/api/alunos/50 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 3,
+  "nome": "Andre Lemos",
+  "curso": "TI - Desenvolvimento de Sistemas"
+}
