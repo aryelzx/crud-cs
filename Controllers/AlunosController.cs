@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc; // For API controllers
 using AlunosApi.Models;
 using AlunosApi.Data;
+using Microsoft.VisualBasic;
 
 namespace AlunosApi.Controllers
 {
@@ -46,6 +47,23 @@ namespace AlunosApi.Controllers
             FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
 
             return NoContent(); // Return 204 No Content after successful update
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+
+            var alunos = FakeDatabase.CarregarAlunos(); 
+            var aluno = alunos.FirstOrDefault(a => a.Id == id);
+
+            if (aluno == null)
+                return NotFound();
+
+
+            alunos.Remove(aluno); // Remove the aluno from the list
+            FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
+
+            return NoContent();
         }
     }
 }

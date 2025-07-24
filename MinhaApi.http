@@ -26,3 +26,9 @@ Accept: application/json
   "nome": "Andre Lemos",
   "curso": "TI - Desenvolvimento de Sistemas"
 }
+
+###
+
+DELETE  {{MinhaApi_HostAddress}}/api/alunos/4 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
