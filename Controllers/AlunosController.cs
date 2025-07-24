@@ -1,25 +1,25 @@
-using Microsoft.AspNetCore.Mvc; // For API controllers
+using Microsoft.AspNetCore.Mvc;
 using AlunosApi.Models;
 using AlunosApi.Data;
 
 namespace AlunosApi.Controllers
 {
-    [ApiController] // Define this class as an API controller
-    [Route("api/[controller]")] // Route for the controller
-    public class AlunosController : ControllerBase // Controller for handling Alunos
+    [ApiController]
+    [Route("api/[controller]")] 
+    public class AlunosController : ControllerBase 
     {
         [HttpGet]
-        public IActionResult GetAll() // IActionResult = ActionResult for API responses
+        public IActionResult GetAll()
         {
             var alunos = FakeDatabase.CarregarAlunos();
-            return Ok(alunos); // Return all alunos with a 200 OK status
+            return Ok(alunos); 
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var aluno = FakeDatabase.CarregarAlunos().FirstOrDefault(a => a.Id == id);
-            return aluno != null ? Ok(aluno) : NotFound(); // Return aluno by ID or 404 if not found
+            return aluno != null ? Ok(aluno) : NotFound();
         }
 
         [HttpPost]
@@ -28,12 +28,12 @@ namespace AlunosApi.Controllers
             var alunos = FakeDatabase.CarregarAlunos();
             var novoAluno = new Aluno
             {
-                Id = alunos.Any() ? alunos.Max(a => a.Id) + 1 : 1, // Gera novo ID
+                Id = alunos.Any() ? alunos.Max(a => a.Id) + 1 : 1, 
                 Nome = aluno.Nome,
                 Curso = aluno.Curso
             };
-            FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
-            return CreatedAtAction(nameof(GetById), new { id = novoAluno.Id }, novoAluno); // Return 201 Created with the new aluno
+            FakeDatabase.SalvarAlunos(alunos); 
+            return CreatedAtAction(nameof(GetById), new { id = novoAluno.Id }, novoAluno); 
         }
 
         [HttpPut("{id}")]
@@ -45,11 +45,11 @@ namespace AlunosApi.Controllers
             if (index == -1)
                 return NotFound();
 
-            alunoAtualizado.Id = id; // Ensure the ID remains the same
-            alunos[index] = alunoAtualizado; // Update the aluno in the list
-            FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
+            alunoAtualizado.Id = id; 
+            alunos[index] = alunoAtualizado; 
+            FakeDatabase.SalvarAlunos(alunos); 
 
-            return NoContent(); // Return 204 No Content after successful update
+            return NoContent(); 
         }
 
         [HttpDelete("{id}")]
@@ -63,8 +63,8 @@ namespace AlunosApi.Controllers
                 return NotFound();
 
 
-            alunos.Remove(aluno); // Remove the aluno from the list
-            FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
+            alunos.Remove(aluno); 
+            FakeDatabase.SalvarAlunos(alunos);
 
             return NoContent();
         }

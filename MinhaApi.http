@@ -1,11 +1,11 @@
 @MinhaApi_HostAddress = http://localhost:5205
 
-GET {{MinhaApi_HostAddress}}/api/alunos
+GET {{MinhaApi_HostAddress}}/api/alunos HTTP/1.1
 Accept: application/json
 
 ###
 
-GET {{MinhaApi_HostAddress}}/api/alunos/1
+GET {{MinhaApi_HostAddress}}/api/alunos/2 HTTP/1.1
 Accept: application/json
 
 ###
@@ -15,24 +15,24 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "nome": "Aryel Ramos Dois",
+  "nome": "Aryel Ramos", 
   "curso": "TI - Desenvolvimento de Sistemas"
 }
 
 ###
 
-PUT {{MinhaApi_HostAddress}}/api/alunos/50 HTTP/1.1
+PUT {{MinhaApi_HostAddress}}/api/alunos/2 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
 {
-  "id": 3,
-  "nome": "Andre Lemos",
-  "curso": "TI - Desenvolvimento de Sistemas"
+  "id": 2,
+  "nome": "Eduardo Pessoa",
+  "curso": "TI - Engenharia de Software"
 }
 
 ###
 
-DELETE  {{MinhaApi_HostAddress}}/api/alunos/4 HTTP/1.1
+DELETE  {{MinhaApi_HostAddress}}/api/alunos/3 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
