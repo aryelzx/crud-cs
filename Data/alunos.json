@@ -1,27 +1,12 @@
 [
   {
     "Id": 1,
-    "Nome": "Evanildo da Silva",
+    "Nome": "Aryel Ramos",
     "Curso": "TI - Desenvolvimento de Sistemas"
   },
   {
     "Id": 2,
-    "Nome": "Aryel Cordeiro",
-    "Curso": "TI - Desenvolvimento de Sistemas"
-  },
-  {
-    "Id": 3,
-    "Nome": "alisson",
-    "Curso": "TI - Desenvolvimento de Sistemas"
-  },
-  {
-    "Id": 5,
-    "Nome": "Elifas Lemos",
-    "Curso": "TI - Desenvolvimento de Sistemas"
-  },
-  {
-    "Id": 50,
-    "Nome": "Andre Lemos",
+    "Nome": "Aryel Ramos Dois",
     "Curso": "TI - Desenvolvimento de Sistemas"
   }
 ]

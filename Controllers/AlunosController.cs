@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc; // For API controllers
 using AlunosApi.Models;
 using AlunosApi.Data;
-using Microsoft.VisualBasic;
 
 namespace AlunosApi.Controllers
 {
@@ -24,13 +23,17 @@ namespace AlunosApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Aluno aluno)
+        public IActionResult Create(CreateAlunoInputDto aluno)
         {
             var alunos = FakeDatabase.CarregarAlunos();
-            aluno.Id = alunos.Any() ? alunos.Max(a => a.Id) + 1 : 1; // Generate new ID
-            alunos.Add(aluno);
+            var novoAluno = new Aluno
+            {
+                Id = alunos.Any() ? alunos.Max(a => a.Id) + 1 : 1, // Gera novo ID
+                Nome = aluno.Nome,
+                Curso = aluno.Curso
+            };
             FakeDatabase.SalvarAlunos(alunos); // Save updated list to database
-            return CreatedAtAction(nameof(GetById), new { id = aluno.Id }, aluno); // Return 201 Created with the new aluno
+            return CreatedAtAction(nameof(GetById), new { id = novoAluno.Id }, novoAluno); // Return 201 Created with the new aluno
         }
 
         [HttpPut("{id}")]
